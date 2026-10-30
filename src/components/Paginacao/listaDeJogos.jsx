@@ -1,7 +1,7 @@
 import React, { useState }from "react";
-import Paginacao from "./paginacao.jsx";
+import Paginacao from "./paginacaoComponent.jsx";
 import jogosMock from "../../data/jogosMock.js";
-import BarraProgresso from "../BarraProgresso/barraProgresso.jsx";
+import BarraProgresso from "../BarraProgresso/barraProgressoComponent.jsx";
 
 const ListaDeJogos = () => {
   const [paginaAtual, setPaginaAtual] = useState(1);

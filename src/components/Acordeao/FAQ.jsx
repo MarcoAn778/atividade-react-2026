@@ -1,5 +1,5 @@
 import React from 'react'
-import Acordeao from './acordeao.jsx'
+import Acordeao from './acordeaoComponent.jsx'
 import './FAQ.css'
 const FAQ = () => {
   return (
