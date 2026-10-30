@@ -1,0 +1,43 @@
+.notificacao {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  padding: 15px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  border-radius: 8px;
+
+  color: white;
+
+  font-weight: bold;
+
+  z-index: 1000;
+}
+
+.notificacao.sucesso {
+  background-color: green;
+}
+
+.notificacao.erro {
+  background-color: red;
+}
+
+.notificacao.aviso {
+  background-color: orange;
+  color: black;
+}
+
+.notificacao button {
+  border: none;
+  background: transparent;
+
+  color: inherit;
+
+  font-size: 18px;
+
+  cursor: pointer;
+}
