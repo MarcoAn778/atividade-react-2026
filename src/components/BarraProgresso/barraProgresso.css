@@ -1,0 +1,20 @@
+.barra-container {
+  width: 300px;
+  height: 25px;
+  background-color: #ddd;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.barra-progresso {
+  height: 100%;
+  background-color: green;
+}
+
+.porcentagem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

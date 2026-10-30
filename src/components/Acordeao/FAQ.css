@@ -1,0 +1,12 @@
+.corpo {
+  width: 100%;
+  max-width: 800px;
+
+  margin: 60px auto;
+  padding: 0 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 15px;
+}
