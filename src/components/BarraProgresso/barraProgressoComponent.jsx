@@ -1,5 +1,5 @@
 import React from 'react'
-import './barraProgresso.css'
+import './barraProgressoComponent.css'
 
 const BarraProgresso = ({progresso}) => {
   return (

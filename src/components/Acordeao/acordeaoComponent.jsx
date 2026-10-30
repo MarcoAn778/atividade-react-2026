@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './acordeao.css';
+import './acordeaoComponent.css';
 
 const Acordeao = ({ titulo, resposta }) => {
   const [acordeaoAberto, setAcordeaoAberto] = useState(false);
