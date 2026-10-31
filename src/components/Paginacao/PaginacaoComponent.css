@@ -4,8 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 
-  gap: 18px;
+  gap: 14px;
 }
 
 .paginacao button {
@@ -35,12 +36,48 @@
   cursor: not-allowed;
 }
 
-.paginacao span {
+.paginacao-numeros {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  gap: 6px;
+
+  list-style: none;
+}
+
+.paginacao .pagina-numero {
+  min-width: 40px;
+
+  padding: 10px 0;
+}
+
+.paginacao .pagina-numero.pagina-ativa {
+  background-color: #6c5ce7;
+
+  border-color: #6c5ce7;
+
+  cursor: default;
+}
+
+.paginacao-info {
   color: #8d8f9a;
 
   font-size: 14px;
 }
 
-.paginacao strong {
+.paginacao-info strong {
   color: #9b8cff;
+}
+
+
+@media (max-width: 600px) {
+  .paginacao-info {
+    order: 3;
+
+    width: 100%;
+
+    text-align: center;
+  }
 }

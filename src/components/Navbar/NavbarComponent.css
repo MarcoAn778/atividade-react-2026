@@ -31,7 +31,6 @@
 }
 
 
-/* LOGO */
 
 .navbar-logo {
   display: flex;
@@ -74,7 +73,6 @@
 }
 
 
-/* LINKS */
 
 .navbar-links {
   display: flex;
@@ -138,8 +136,6 @@
 }
 
 
-/* CONTADOR */
-
 .contador-favoritos {
   min-width: 20px;
   height: 20px;
@@ -164,7 +160,6 @@
 }
 
 
-/* TABLET */
 
 @media (max-width: 800px) {
 
@@ -191,7 +186,6 @@
 }
 
 
-/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -242,7 +236,6 @@
 }
 
 
-/* MOBILE PEQUENO */
 
 @media (max-width: 380px) {
 

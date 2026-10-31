@@ -6,9 +6,19 @@ const PaginacaoComponent = ({
   setPaginaAtual,
   totalPaginas
 }) => {
+  const paginas = Array.from(
+    { length: totalPaginas },
+    (_, indice) => indice + 1
+  );
+
   return (
-    <div className="paginacao">
+    <nav
+      className="paginacao"
+      aria-label="Paginação da lista de jogos"
+    >
       <button
+        type="button"
+        className="paginacao-navegar"
         onClick={() =>
           setPaginaAtual(paginaAtual - 1)
         }
@@ -17,11 +27,41 @@ const PaginacaoComponent = ({
         ← Anterior
       </button>
 
-      <span>
+      <ul className="paginacao-numeros">
+
+        {paginas.map((numero) => (
+          <li key={numero}>
+            <button
+              type="button"
+              className={
+                numero === paginaAtual
+                  ? "pagina-numero pagina-ativa"
+                  : "pagina-numero"
+              }
+              aria-label={`Ir para a página ${numero}`}
+              aria-current={
+                numero === paginaAtual
+                  ? "page"
+                  : undefined
+              }
+              onClick={() =>
+                setPaginaAtual(numero)
+              }
+            >
+              {numero}
+            </button>
+          </li>
+        ))}
+
+      </ul>
+
+      <span className="paginacao-info">
         Página <strong>{paginaAtual}</strong> de {totalPaginas}
       </span>
 
       <button
+        type="button"
+        className="paginacao-navegar"
         onClick={() =>
           setPaginaAtual(paginaAtual + 1)
         }
@@ -29,7 +69,7 @@ const PaginacaoComponent = ({
       >
         Próxima →
       </button>
-    </div>
+    </nav>
   );
 };
 

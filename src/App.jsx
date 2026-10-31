@@ -33,6 +33,7 @@ const App = () => {
 
       {notificacao && (
         <NotificacaoComponent
+          key={notificacao.id}
           mensagem={notificacao.mensagem}
           tipo={notificacao.tipo}
           fechar={fecharNotificacao}

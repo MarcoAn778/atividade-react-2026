@@ -32,7 +32,7 @@ const FAQ = () => {
     {
       titulo: "Os favoritos continuam disponíveis em outras páginas?",
       resposta:
-        "Sim. Os favoritos utilizam um estado global com Context API, permitindo que os dados sejam compartilhados entre diferentes páginas e componentes.",
+        "Sim. Os favoritos utilizam um estado global com Context API, permitindo que os dados sejam compartilhados entre diferentes páginas e componentes. Eles também ficam salvos no navegador, então continuam aqui mesmo após recarregar a página.",
     },
   ];
 
@@ -42,6 +42,7 @@ const FAQ = () => {
       {perguntas.map((pergunta, indice) => (
         <Acordeao
           key={indice}
+          id={`faq-${indice}`}
           titulo={pergunta.titulo}
           resposta={pergunta.resposta}
           aberto={acordeaoAberto === indice}

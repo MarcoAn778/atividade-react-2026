@@ -8,7 +8,7 @@ const NavbarComponent = () => {
   const { favoritos } = usarJogos();
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" aria-label="Navegação principal">
       <div className="navbar-conteudo">
 
         <NavLink to="/" className="navbar-logo">
@@ -17,6 +17,7 @@ const NavbarComponent = () => {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
           >
             <path
               d="M7.5 8H16.5C19.2 8 21 10.1 21 12.6V15.2C21 17.3 19.6 18.5 18.2 18.5C16.9 18.5 16.2 17.7 15.4 16.8L14.5 15.8H9.5L8.6 16.8C7.8 17.7 7.1 18.5 5.8 18.5C4.4 18.5 3 17.3 3 15.2V12.6C3 10.1 4.8 8 7.5 8Z"
@@ -77,7 +78,10 @@ const NavbarComponent = () => {
             Favoritos
 
             {favoritos.length > 0 && (
-              <span className="contador-favoritos">
+              <span
+                className="contador-favoritos"
+                aria-label={`${favoritos.length} jogo(s) favoritado(s)`}
+              >
                 {favoritos.length}
               </span>
             )}

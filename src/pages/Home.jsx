@@ -11,9 +11,6 @@ import MenuSuspensoComponent from "../components/MenuSuspenso/MenuSuspensoCompon
 const Home = () => {
   const [filtroJogos, setFiltroJogos] = useState("todos");
 
-  const [itemMenuSelecionado, setItemMenuSelecionado] =
-    useState("todos");
-
   const navegar = useNavigate();
 
   const itensMenu = [
@@ -39,7 +36,7 @@ const Home = () => {
       },
     },
     {
-      id: "favoritos",
+      id: "pagina-favoritos",
       titulo: "Ver página de favoritos",
       acao: () => {
         navegar("/favoritos");
@@ -58,6 +55,7 @@ const Home = () => {
             className="home-badge-icone"
             viewBox="0 0 24 24"
             fill="none"
+            aria-hidden="true"
           >
             <path
               d="M7.5 8H16.5C19.2 8 21 10.1 21 12.6V15.2C21 17.3 19.6 18.5 18.2 18.5C16.9 18.5 16.2 17.7 15.4 16.8L14.5 15.8H9.5L8.6 16.8C7.8 17.7 7.1 18.5 5.8 18.5C4.4 18.5 3 17.3 3 15.2V12.6C3 10.1 4.8 8 7.5 8Z"
@@ -114,7 +112,10 @@ const Home = () => {
 
       </header>
 
-      <section className="secao-teste">
+      <section
+        className="secao-teste"
+        aria-labelledby="titulo-menu"
+      >
 
         <div className="secao-titulo">
 
@@ -122,7 +123,7 @@ const Home = () => {
             ATALHOS
           </span>
 
-          <h2>
+          <h2 id="titulo-menu">
             Menu da Biblioteca
           </h2>
 
@@ -135,19 +136,19 @@ const Home = () => {
         </div>
 
         <MenuSuspensoComponent
-          itemSelecionado={itemMenuSelecionado}
-          aoSelecionar={(id) => {
-            setItemMenuSelecionado(id);
-          }}
+          itemSelecionado={filtroJogos}
           menu={{
-            titulo: "Todos os jogos",
+            titulo: "Filtrar jogos",
             itens: itensMenu,
           }}
         />
 
       </section>
 
-      <section className="secao-teste">
+      <section
+        className="secao-teste"
+        aria-labelledby="titulo-biblioteca"
+      >
 
         <div className="secao-titulo">
 
@@ -155,7 +156,9 @@ const Home = () => {
             BIBLIOTECA
           </span>
 
-          <h2>Meus Jogos</h2>
+          <h2 id="titulo-biblioteca">
+            Meus Jogos
+          </h2>
 
           <p>
             Confira seus jogos,
@@ -167,10 +170,8 @@ const Home = () => {
 
 
         <AbaComponent
-          abaInicial="todos"
-          aoMudarAba={
-            setFiltroJogos
-          }
+          abaAtiva={filtroJogos}
+          aoMudarAba={setFiltroJogos}
           abas={[
             {
               id: "todos",
@@ -206,7 +207,10 @@ const Home = () => {
 
       </section>
 
-      <section className="secao-teste">
+      <section
+        className="secao-teste"
+        aria-labelledby="titulo-faq"
+      >
 
         <div className="secao-titulo">
 
@@ -214,7 +218,7 @@ const Home = () => {
             AJUDA
           </span>
 
-          <h2>
+          <h2 id="titulo-faq">
             Perguntas Frequentes
           </h2>
 

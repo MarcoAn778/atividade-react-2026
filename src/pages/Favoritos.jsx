@@ -35,6 +35,7 @@ const Favoritos = () => {
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 d="M7.5 8H16.5C19.2 8 21 10.1 21 12.6V15.2C21 17.3 19.6 18.5 18.2 18.5C16.9 18.5 16.2 17.7 15.4 16.8L14.5 15.8H9.5L8.6 16.8C7.8 17.7 7.1 18.5 5.8 18.5C4.4 18.5 3 17.3 3 15.2V12.6C3 10.1 4.8 8 7.5 8Z"
@@ -96,6 +97,7 @@ const Favoritos = () => {
                 <img
                   src={jogo.imagem}
                   alt={jogo.titulo}
+                  loading="lazy"
                 />
 
                 <span className="jogo-genero">
@@ -116,7 +118,9 @@ const Favoritos = () => {
                 />
 
                 <button
+                  type="button"
                   className="remover-favorito"
+                  aria-label={`Remover ${jogo.titulo} dos favoritos`}
                   onClick={() => favoritarJogo(jogo)}
                 >
                   <svg
@@ -124,6 +128,7 @@ const Favoritos = () => {
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
                   >
                     <path
                       d="M20.8 4.6C19.9 3.6 18.6 3 17.2 3C15.2 3 13.4 4.1 12 5.7C10.6 4.1 8.8 3 6.8 3C5.4 3 4.1 3.6 3.2 4.6C1.2 6.8 1.4 10.2 3.4 12.3L12 21L20.6 12.3C22.6 10.2 22.8 6.8 20.8 4.6Z"

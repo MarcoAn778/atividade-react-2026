@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./MenuSuspensoComponent.css";
 
 const MenuSuspensoComponent = ({
@@ -7,6 +7,33 @@ const MenuSuspensoComponent = ({
   aoSelecionar
 }) => {
   const [menuAberto, setMenuAberto] = useState(false);
+
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const aoClicarFora = (evento) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(evento.target)
+      ) {
+        setMenuAberto(false);
+      }
+    };
+
+    const aoApertarTecla = (evento) => {
+      if (evento.key === "Escape") {
+        setMenuAberto(false);
+      }
+    };
+
+    document.addEventListener("mousedown", aoClicarFora);
+    document.addEventListener("keydown", aoApertarTecla);
+
+    return () => {
+      document.removeEventListener("mousedown", aoClicarFora);
+      document.removeEventListener("keydown", aoApertarTecla);
+    };
+  }, []);
 
   const itemAtual = menu.itens.find(
     (item) => item.id === itemSelecionado
@@ -26,6 +53,7 @@ const MenuSuspensoComponent = ({
 
   return (
     <div
+      ref={menuRef}
       className={
         menuAberto
           ? "menu-suspenso aberto"
@@ -33,7 +61,11 @@ const MenuSuspensoComponent = ({
       }
     >
       <button
+        type="button"
         className="botao-menu"
+        aria-haspopup="true"
+        aria-expanded={menuAberto}
+        aria-controls="lista-menu-suspenso"
         onClick={() =>
           setMenuAberto(!menuAberto)
         }
@@ -52,6 +84,7 @@ const MenuSuspensoComponent = ({
           }
           viewBox="0 0 24 24"
           fill="none"
+          aria-hidden="true"
         >
           <path
             d="M6 9L12 15L18 9"
@@ -70,16 +103,25 @@ const MenuSuspensoComponent = ({
             : "menu-dropdown"
         }
       >
-        <ul className="itens-menu">
+        <ul
+          className="itens-menu"
+          id="lista-menu-suspenso"
+        >
 
           {menu.itens.map((item) => (
             <li key={item.id}>
 
               <button
+                type="button"
                 className={
                   itemSelecionado === item.id
                     ? "item-menu ativo"
                     : "item-menu"
+                }
+                aria-current={
+                  itemSelecionado === item.id
+                    ? "true"
+                    : undefined
                 }
                 onClick={() =>
                   selecionarItem(item)
@@ -94,6 +136,7 @@ const MenuSuspensoComponent = ({
                     className="icone-check"
                     viewBox="0 0 24 24"
                     fill="none"
+                    aria-hidden="true"
                   >
                     <path
                       d="M5 12.5L9.5 17L19 7"

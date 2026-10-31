@@ -1,61 +1,83 @@
 import React, {
   createContext,
+  useCallback,
   useContext,
+  useEffect,
   useState
 } from "react";
 
 const ContextoJogos = createContext();
 
+const CHAVE_FAVORITOS = "gamehub:favoritos";
+
+const carregarFavoritos = () => {
+  try {
+    const salvos = localStorage.getItem(CHAVE_FAVORITOS);
+
+    return salvos ? JSON.parse(salvos) : [];
+  } catch {
+    return [];
+  }
+};
+
 export const ProvedorJogos = ({ children }) => {
-  const [favoritos, setFavoritos] = useState([]);
+  const [favoritos, setFavoritos] = useState(carregarFavoritos);
 
   const [notificacao, setNotificacao] = useState(null);
 
-  const mostrarNotificacao = (mensagem, tipo = "sucesso") => {
-    setNotificacao({
-      mensagem,
-      tipo,
-    });
-  };
-
-  const fecharNotificacao = () => {
-    setNotificacao(null);
-  };
-
-  const favoritarJogo = (jogo) => {
-    const jogoJaEstaFavoritado = favoritos.some(
-      (jogoFavorito) => jogoFavorito.id === jogo.id
-    );
-
-    if (jogoJaEstaFavoritado) {
-      const novaListaDeFavoritos = favoritos.filter(
-        (jogoFavorito) => jogoFavorito.id !== jogo.id
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        CHAVE_FAVORITOS,
+        JSON.stringify(favoritos)
       );
-
-      setFavoritos(novaListaDeFavoritos);
-
-      mostrarNotificacao(
-        `${jogo.titulo} foi removido dos favoritos.`,
-        "aviso"
-      );
-
-    } else {
-      setFavoritos([
-        ...favoritos,
-        jogo
-      ]);
-
-      mostrarNotificacao(
-        `${jogo.titulo} foi adicionado aos favoritos!`,
-        "sucesso"
-      );
+    } catch {
     }
-  };
+  }, [favoritos]);
+
+  const mostrarNotificacao = useCallback(
+    (mensagem, tipo = "sucesso") => {
+      setNotificacao({
+        id: Date.now(),
+        mensagem,
+        tipo,
+      });
+    },
+    []
+  );
+
+  const fecharNotificacao = useCallback(() => {
+    setNotificacao(null);
+  }, []);
 
   const jogoEstaFavoritado = (id) => {
     return favoritos.some(
       (jogo) => jogo.id === id
     );
+  };
+
+  const favoritarJogo = (jogo) => {
+    const jogoJaEstaFavoritado = jogoEstaFavoritado(jogo.id);
+
+    setFavoritos((listaAtual) =>
+      jogoJaEstaFavoritado
+        ? listaAtual.filter(
+            (jogoFavorito) => jogoFavorito.id !== jogo.id
+          )
+        : [...listaAtual, jogo]
+    );
+
+    if (jogoJaEstaFavoritado) {
+      mostrarNotificacao(
+        `${jogo.titulo} foi removido dos favoritos.`,
+        "aviso"
+      );
+    } else {
+      mostrarNotificacao(
+        `${jogo.titulo} foi adicionado aos favoritos!`,
+        "sucesso"
+      );
+    }
   };
 
   return (

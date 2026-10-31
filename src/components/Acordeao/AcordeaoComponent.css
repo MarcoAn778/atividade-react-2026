@@ -23,6 +23,14 @@
   background-color: #14141d;
 }
 
+.titulo-acordeao {
+  margin: 0;
+
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: normal;
+}
+
 .botao-acordeao {
   width: 100%;
 
@@ -86,16 +94,24 @@
   grid-template-rows: 0fr;
 
   opacity: 0;
+  visibility: hidden;
 
   transition:
     grid-template-rows 0.35s ease,
-    opacity 0.3s ease;
+    opacity 0.3s ease,
+    visibility 0s linear 0.35s;
 }
 
 .resposta-container.aberto {
   grid-template-rows: 1fr;
 
   opacity: 1;
+  visibility: visible;
+
+  transition:
+    grid-template-rows 0.35s ease,
+    opacity 0.3s ease,
+    visibility 0s;
 }
 
 .resposta-conteudo {
