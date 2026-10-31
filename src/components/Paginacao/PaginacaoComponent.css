@@ -1,0 +1,46 @@
+.paginacao {
+  margin-top: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+}
+
+.paginacao button {
+  padding: 10px 16px;
+
+  border: 1px solid #343642;
+  border-radius: 8px;
+
+  background-color: #191a22;
+
+  color: white;
+
+  font-weight: 600;
+
+  transition: 0.2s;
+}
+
+.paginacao button:hover:not(:disabled) {
+  background-color: #6c5ce7;
+
+  border-color: #6c5ce7;
+}
+
+.paginacao button:disabled {
+  opacity: 0.35;
+
+  cursor: not-allowed;
+}
+
+.paginacao span {
+  color: #8d8f9a;
+
+  font-size: 14px;
+}
+
+.paginacao strong {
+  color: #9b8cff;
+}

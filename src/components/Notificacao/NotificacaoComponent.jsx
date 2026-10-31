@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./notificacaoComponent.css";
+import "./NotificacaoComponent.css";
 
 const NotificacaoComponent = ({ mensagem, tipo, fechar }) => {
   useEffect(() => {

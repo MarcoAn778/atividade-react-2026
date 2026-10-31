@@ -1,45 +1,80 @@
-import React, { createContext, useContext, useState } from 'react'
-const ContextoJogos = createContext()
+import React, {
+  createContext,
+  useContext,
+  useState
+} from "react";
 
-export const  ProvedorJogos = ({ children }) => {
-    const[favoritos, setFavoritos] = useState([]);
+const ContextoJogos = createContext();
 
-    const favoritarJogo = (jogo) => {
-        const jogoJaEstaFavoritado = favoritos.some(
-            (jogoFavorito) => jogoFavorito.id === jogo.id
-        );
-        if (jogoJaEstaFavoritado) {
-            const novaListaDeFavoritos = favoritos.filter(
-                (jogoFavorito) => jogoFavorito.id !== jogo.id
-            );
+export const ProvedorJogos = ({ children }) => {
+  const [favoritos, setFavoritos] = useState([]);
 
-            setFavoritos(novaListaDeFavoritos);
-        } else {
-            setFavoritos([
-                ...favoritos, jogo
-            ]);
-        }
-    };
+  const [notificacao, setNotificacao] = useState(null);
 
-    const jogoEstaFavoritado = (id) => {
-        return favoritos.some(
-            (jogo) => jogo.id === id
-        );
-    };
+  const mostrarNotificacao = (mensagem, tipo = "sucesso") => {
+    setNotificacao({
+      mensagem,
+      tipo,
+    });
+  };
 
-    return (
-        <ContextoJogos.Provider
-            value={{
-                favoritos,
-                favoritarJogos,
-                jogoEstaFavoritado,
-            }}
-        >
-            { children }
-        <ContextoJogos.Provider
+  const fecharNotificacao = () => {
+    setNotificacao(null);
+  };
+
+  const favoritarJogo = (jogo) => {
+    const jogoJaEstaFavoritado = favoritos.some(
+      (jogoFavorito) => jogoFavorito.id === jogo.id
     );
+
+    if (jogoJaEstaFavoritado) {
+      const novaListaDeFavoritos = favoritos.filter(
+        (jogoFavorito) => jogoFavorito.id !== jogo.id
+      );
+
+      setFavoritos(novaListaDeFavoritos);
+
+      mostrarNotificacao(
+        `${jogo.titulo} foi removido dos favoritos.`,
+        "aviso"
+      );
+
+    } else {
+      setFavoritos([
+        ...favoritos,
+        jogo
+      ]);
+
+      mostrarNotificacao(
+        `${jogo.titulo} foi adicionado aos favoritos!`,
+        "sucesso"
+      );
+    }
+  };
+
+  const jogoEstaFavoritado = (id) => {
+    return favoritos.some(
+      (jogo) => jogo.id === id
+    );
+  };
+
+  return (
+    <ContextoJogos.Provider
+      value={{
+        favoritos,
+        favoritarJogo,
+        jogoEstaFavoritado,
+
+        notificacao,
+        mostrarNotificacao,
+        fecharNotificacao,
+      }}
+    >
+      {children}
+    </ContextoJogos.Provider>
+  );
 };
 
 export const usarJogos = () => {
-    return useContext(ContextoJogos);
-}
+  return useContext(ContextoJogos);
+};

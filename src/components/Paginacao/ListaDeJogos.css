@@ -1,0 +1,210 @@
+.lista-jogos {
+  width: 100%;
+
+  margin-top: 25px;
+}
+
+.jogos-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 22px;
+}
+
+.jogo-card {
+  overflow: hidden;
+
+  background-color: #111218;
+
+  border: 1px solid #292b35;
+  border-radius: 13px;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.jogo-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #565165;
+
+  box-shadow:
+    0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.jogo-imagem-container {
+  position: relative;
+
+  width: 100%;
+  height: 165px;
+
+  overflow: hidden;
+}
+
+.jogo-imagem-container img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.jogo-card:hover img {
+  transform: scale(1.04);
+}
+
+.jogo-genero {
+  position: absolute;
+
+  left: 12px;
+  bottom: 12px;
+
+  padding: 6px 9px;
+
+  border-radius: 6px;
+
+  background-color:
+    rgba(15, 16, 21, 0.88);
+
+  backdrop-filter: blur(10px);
+
+  color: #cbc6ff;
+
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.4px;
+}
+
+.jogo-conteudo {
+  padding: 18px;
+}
+
+.jogo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
+
+.jogo-header h3 {
+  color: #ffffff;
+
+  font-family: "Rajdhani", sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+
+  line-height: 1.1;
+}
+
+.jogo-header > span {
+  color: #777a87;
+
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+}
+
+.progresso-titulo {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 6px;
+
+  color: #858895;
+
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.botao-favorito {
+  width: 100%;
+
+  margin-top: 18px;
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+
+  border: 1px solid #343642;
+  border-radius: 8px;
+
+  background-color: transparent;
+
+  color: #bbbcc5;
+
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.botao-favorito:hover {
+  color: #ffffff;
+
+  border-color: #6c5ce7;
+
+  background-color: #23212f;
+
+  transform: translateY(-1px);
+}
+
+.botao-favorito.ativo {
+  color: #ff6b81;
+
+  border-color: #ff4757;
+
+  background-color:
+    rgba(255, 71, 87, 0.08);
+}
+
+.icone-favorito {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+}
+
+.lista-vazia {
+  padding: 50px 20px;
+
+  text-align: center;
+
+  background-color: #101116;
+
+  border: 1px dashed #343642;
+  border-radius: 12px;
+}
+
+.lista-vazia h3 {
+  margin-bottom: 8px;
+
+  color: #ffffff;
+
+  font-family: "Rajdhani", sans-serif;
+  font-size: 24px;
+}
+
+.lista-vazia p {
+  color: #858895;
+
+  font-size: 14px;
+}

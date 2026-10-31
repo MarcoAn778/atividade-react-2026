@@ -1,8 +1,22 @@
-import React, { useState } from 'react'
-import './abaComponent.css'
+import React, { useState } from "react";
+import "./AbaComponent.css";
 
-const AbaComponent = ({ abas }) => {
-  const [abaAtiva, setAbaAtiva] = useState(abas[0].id)
+const AbaComponent = ({
+  abas,
+  abaInicial,
+  aoMudarAba
+}) => {
+  const [abaAtiva, setAbaAtiva] = useState(
+    abaInicial || abas[0].id
+  );
+
+  const selecionarAba = (aba) => {
+    setAbaAtiva(aba.id);
+
+    if (aoMudarAba) {
+      aoMudarAba(aba.id);
+    }
+  };
 
   return (
     <div className="aba-container">
@@ -12,8 +26,14 @@ const AbaComponent = ({ abas }) => {
         {abas.map((aba) => (
           <button
             key={aba.id}
-            className={abaAtiva === aba.id ? "ativo" : ""}
-            onClick={() => setAbaAtiva(aba.id)}
+            className={
+              abaAtiva === aba.id
+                ? "ativo"
+                : ""
+            }
+            onClick={() =>
+              selecionarAba(aba)
+            }
           >
             {aba.titulo}
           </button>
@@ -34,7 +54,7 @@ const AbaComponent = ({ abas }) => {
       </div>
 
     </div>
-  )
-}
+  );
+};
 
-export default AbaComponent
+export default AbaComponent;

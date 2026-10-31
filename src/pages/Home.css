@@ -1,0 +1,161 @@
+.home-container {
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+  padding: 55px 25px 80px;
+}
+
+.home-header {
+  padding: 60px 0 70px;
+
+  text-align: center;
+}
+
+.home-badge {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 20px;
+  padding: 8px 14px;
+
+  border: 1px solid #45415f;
+  border-radius: 50px;
+
+  background-color: #1d1d2b;
+
+  color: #aaa1ff;
+
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1.6px;
+}
+
+.home-badge-icone {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+
+  color: #8b7cff;
+}
+
+.home-header h1 {
+  margin-bottom: 18px;
+
+  font-family: "Rajdhani", sans-serif;
+
+  font-size: clamp(48px, 7vw, 76px);
+  font-weight: 700;
+  line-height: 0.95;
+
+  letter-spacing: -1px;
+
+  color: #1b033b;
+}
+
+.home-header h1 span {
+  color: #8b7cff;
+}
+
+.home-header p {
+  max-width: 620px;
+
+  margin: 0 auto;
+
+  color: #989aaa;
+
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.secao-teste {
+  margin-bottom: 35px;
+  padding: 30px;
+
+  background-color: #15161d;
+
+  border: 1px solid #292b35;
+  border-radius: 16px;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.18);
+
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.secao-teste:hover {
+  border-color: #343642;
+}
+
+.secao-titulo {
+  margin-bottom: 25px;
+}
+
+.secao-tag {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  color: #8b7cff;
+
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1.7px;
+}
+
+.secao-titulo h2 {
+  margin-bottom: 6px;
+
+  font-family: "Rajdhani", sans-serif;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  color: #ffffff;
+}
+
+.secao-titulo p {
+  max-width: 650px;
+
+  color: #858895;
+
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .home-container {
+    padding: 30px 15px 60px;
+  }
+
+  .home-header {
+    padding: 40px 0 50px;
+  }
+
+  .home-header h1 {
+    font-size: 46px;
+  }
+
+  .home-header p {
+    font-size: 15px;
+  }
+
+  .secao-teste {
+    padding: 20px;
+  }
+
+  .secao-titulo h2 {
+    font-size: 26px;
+  }
+}

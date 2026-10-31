@@ -1,28 +1,39 @@
-import React, { useState } from 'react';
-import './acordeaoComponent.css';
+import React from "react";
+import "./AcordeaoComponent.css";
 
-const Acordeao = ({ titulo, resposta }) => {
-  const [acordeaoAberto, setAcordeaoAberto] = useState(false);
-
+const Acordeao = ({
+  titulo,
+  resposta,
+  aberto,
+  aoAlternar
+}) => {
   return (
-    <div className="acordeao">
+    <div className={`acordeao ${aberto ? "aberto" : ""}`}>
 
       <button
-        onClick={() => setAcordeaoAberto(!acordeaoAberto)}
+        onClick={aoAlternar}
         className="botao-acordeao"
       >
         <span>{titulo}</span>
 
         <span className="icone-acordeao">
-          {acordeaoAberto ? '-' : '+'}
+          {aberto ? "−" : "+"}
         </span>
       </button>
 
-      {acordeaoAberto && (
-        <div className="resposta-acordeao">
-          <p>{resposta}</p>
+      <div
+        className={
+          aberto
+            ? "resposta-container aberto"
+            : "resposta-container"
+        }
+      >
+        <div className="resposta-conteudo">
+          <div className="resposta-acordeao">
+            <p>{resposta}</p>
+          </div>
         </div>
-      )}
+      </div>
 
     </div>
   );

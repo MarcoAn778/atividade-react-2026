@@ -1,7 +1,7 @@
 import React from 'react'
-import './barraProgressoComponent.css'
+import './BarraProgressoComponent.css'
 
-const BarraProgresso = ({progresso}) => {
+const BarraProgressoComponent = ({progresso}) => {
   return (
     <div className="barra-container">
         <div className="barra-progresso" style={{ width: `${progresso}%` }}></div>
@@ -10,4 +10,4 @@ const BarraProgresso = ({progresso}) => {
   )
 }
 
-export default BarraProgresso
+export default BarraProgressoComponent
