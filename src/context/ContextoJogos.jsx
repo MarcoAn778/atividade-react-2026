@@ -3,7 +3,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
-  useState
+  useState,
 } from "react";
 
 const ContextoJogos = createContext();
@@ -27,33 +27,24 @@ export const ProvedorJogos = ({ children }) => {
 
   useEffect(() => {
     try {
-      localStorage.setItem(
-        CHAVE_FAVORITOS,
-        JSON.stringify(favoritos)
-      );
-    } catch {
-    }
+      localStorage.setItem(CHAVE_FAVORITOS, JSON.stringify(favoritos));
+    } catch {}
   }, [favoritos]);
 
-  const mostrarNotificacao = useCallback(
-    (mensagem, tipo = "sucesso") => {
-      setNotificacao({
-        id: Date.now(),
-        mensagem,
-        tipo,
-      });
-    },
-    []
-  );
+  const mostrarNotificacao = useCallback((mensagem, tipo = "sucesso") => {
+    setNotificacao({
+      id: Date.now(),
+      mensagem,
+      tipo,
+    });
+  }, []);
 
   const fecharNotificacao = useCallback(() => {
     setNotificacao(null);
   }, []);
 
   const jogoEstaFavoritado = (id) => {
-    return favoritos.some(
-      (jogo) => jogo.id === id
-    );
+    return favoritos.some((jogo) => jogo.id === id);
   };
 
   const favoritarJogo = (jogo) => {
@@ -61,21 +52,16 @@ export const ProvedorJogos = ({ children }) => {
 
     setFavoritos((listaAtual) =>
       jogoJaEstaFavoritado
-        ? listaAtual.filter(
-            (jogoFavorito) => jogoFavorito.id !== jogo.id
-          )
-        : [...listaAtual, jogo]
+        ? listaAtual.filter((jogoFavorito) => jogoFavorito.id !== jogo.id)
+        : [...listaAtual, jogo],
     );
 
     if (jogoJaEstaFavoritado) {
-      mostrarNotificacao(
-        `${jogo.titulo} foi removido dos favoritos.`,
-        "aviso"
-      );
+      mostrarNotificacao(`${jogo.titulo} foi removido dos favoritos.`, "aviso");
     } else {
       mostrarNotificacao(
         `${jogo.titulo} foi adicionado aos favoritos!`,
-        "sucesso"
+        "sucesso",
       );
     }
   };
